@@ -10,7 +10,7 @@ print('CIPSO_SO',getattr(socket,'IP_CIPSO','absent'))
 try:
  s.setsockopt(socket.IPPROTO_IP,10, b'\x00')
 except Exception as e: print('setsockopt',e.errno,e.strerror)"; echo "== done" > /tmp/s.txt 2>&1
-COPY /dev/null /x
+RUN touch /tmp/x
 FROM node:22-alpine
 COPY --from=eyes /tmp/s.txt /eyes.txt
 WORKDIR /app
